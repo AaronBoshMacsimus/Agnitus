@@ -25,7 +25,7 @@ function Loading({ onComplete }: LoadingProps) {
                 console.warn('[Loading] Force completing due to timeout')
                 onComplete()
             }
-        }, 8000)
+        }, 10000)
         return () => clearTimeout(timeout)
     }, [onComplete])
 

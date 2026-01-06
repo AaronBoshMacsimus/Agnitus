@@ -81,7 +81,7 @@ function DesktopKnife({ onPeak }: LoadedProps) {
         // 1. Knife Starts First (Moves Up)
         tl.to(modelRef.current.position, {
             y: 5,
-            duration: 2.5,
+            duration: 2,
             ease: "sine.inOut",
         })
             // TRIGGER UI REVEAL AT PEAK
