@@ -72,8 +72,6 @@ function DesktopKnife({ onPeak }: LoadedProps) {
 
         // Desktop Configuration
         const config = {
-            targetPos: { x: viewport.width * 0.032, y: viewport.height * 0.421, z: 0 },
-            midPoint: { x: viewport.width * 0.1, y: 2.5, z: 0 }
         };
 
         const tl = gsap.timeline();
@@ -81,7 +79,6 @@ function DesktopKnife({ onPeak }: LoadedProps) {
         // 1. Knife Starts First (Moves Up)
         tl.to(modelRef.current.position, {
             y: 5,
-            duration: 2,
             ease: "sine.inOut",
         })
             // TRIGGER UI REVEAL AT PEAK
@@ -97,20 +94,16 @@ function DesktopKnife({ onPeak }: LoadedProps) {
                 ease: "power2.out",
             })
             // Simultaneous rotation during the move
-            .to(modelRef.current.rotation, {
                 x: 0,
                 y: Math.PI * 4, // multiple spins
                 z: 0, // Lands upright
                 duration: 2,
                 ease: "power1.inOut",
-            }, "<")
-            .to(modelRef.current.scale, {
                 x: 0.25,
                 y: 0.25,
                 z: 0.25,
                 duration: 2,
                 ease: "power1.inOut",
-            }, "<")
             .call(() => {
                 setEnabled(true);
             })
@@ -120,7 +113,6 @@ function DesktopKnife({ onPeak }: LoadedProps) {
                 repeat: -1,
                 ease: "none",
             });
-
     }, []);
 
     return (
@@ -143,10 +135,6 @@ function DesktopKnife({ onPeak }: LoadedProps) {
 }
 
 export default function Loaded(props: LoadedProps) {
-    const { viewport } = useThree();
-    const isMobile = viewport.width < viewport.height; // Simple heuristic for mobile
-
-    if (isMobile) {
         return <MobileFireball {...props} />;
     }
 

@@ -1,53 +1,61 @@
-import { useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
-import AboutText from '../sections/AboutText'
+import { useRef, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import AboutText from "../sections/AboutText";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
-  const container = useRef<HTMLDivElement>(null)
-  const leftImage = useRef<HTMLImageElement>(null)
-  const rightImage = useRef<HTMLImageElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
-  const maskRef = useRef<HTMLDivElement>(null)
-  const logoRef = useRef<HTMLImageElement>(null)
+  const { setRevealed } = useOutletContext<{
+    setRevealed: (val: boolean) => void;
+  }>();
+  const container = useRef<HTMLDivElement>(null);
+  const leftImage = useRef<HTMLImageElement>(null);
+  const rightImage = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const maskRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    setRevealed(true);
+  }, [setRevealed]);
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia()
+      const mm = gsap.matchMedia();
 
       mm.add(
         {
-          isDesktop: '(min-width: 768px)',
-          isMobile: '(max-width: 767px)',
+          isDesktop: "(min-width: 768px)",
+          isMobile: "(max-width: 767px)",
         },
         (context) => {
           const { isDesktop } = context.conditions as {
-            isDesktop: boolean
-          }
+            isDesktop: boolean;
+          };
 
           // Entrance Animation for Images
-          const entranceTl = gsap.timeline({ delay: 1 }) // Start after text animation roughly
+          const entranceTl = gsap.timeline({ delay: 1 }); // Start after text animation roughly
 
           entranceTl.from([leftImage.current, rightImage.current], {
             y: 100,
             opacity: 0,
             duration: 1.2,
             stagger: 0.3,
-            ease: 'power3.out',
-          })
+            ease: "power3.out",
+          });
 
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: container.current,
-              start: 'top top',
-              end: '+=100%',
+              start: "top top",
+              end: "+=100%",
               scrub: 1,
               pin: true,
             },
-          })
+          });
 
           // Text moves up and fades out
           tl.to(
@@ -56,74 +64,74 @@ export default function About() {
               y: -150,
               opacity: 0,
               duration: 1,
-              ease: 'power2.inOut',
+              ease: "power2.inOut",
             },
-            'start'
-          )
+            "start"
+          );
 
           // Images expand
           if (isDesktop) {
             tl.to(
               leftImage.current,
               {
-                width: '50vw',
-                height: '100vh',
+                width: "50vw",
+                height: "100vh",
                 top: 0,
                 left: 0,
                 borderRadius: 0,
                 rotate: 0,
                 duration: 1,
-                ease: 'power1.out',
+                ease: "power1.out",
               },
-              'start'
-            )
+              "start"
+            );
 
             tl.to(
               rightImage.current,
               {
-                width: '50vw',
-                height: '100vh',
+                width: "50vw",
+                height: "100vh",
                 top: 0,
                 right: 0,
                 borderRadius: 0,
                 rotate: 0,
                 duration: 1,
-                ease: 'power1.out',
+                ease: "power1.out",
               },
-              'start'
-            )
+              "start"
+            );
           } else {
             // Mobile: Stack images vertically
             tl.to(
               leftImage.current,
               {
-                width: '100vw',
-                height: '50vh',
+                width: "100vw",
+                height: "50vh",
                 top: 0,
                 left: 0,
                 borderRadius: 0,
                 rotate: 0,
                 duration: 1,
-                ease: 'power1.out',
+                ease: "power1.out",
               },
-              'start'
-            )
+              "start"
+            );
 
             tl.to(
               rightImage.current,
               {
-                width: '100vw',
-                height: '50vh',
-                top: '50vh', // Starts at the middle
-                right: 'auto', // Reset right
+                width: "100vw",
+                height: "50vh",
+                top: "50vh", // Starts at the middle
+                right: "auto", // Reset right
                 left: 0,
                 borderRadius: 0,
                 rotate: 0,
                 duration: 1,
-                ease: 'power1.out',
+                ease: "power1.out",
               },
-              'start'
-            )
+              "start"
+            );
           }
 
           // Logo appears at the center at the end
@@ -137,10 +145,10 @@ export default function About() {
               opacity: 1,
               scale: 1,
               duration: 0.5,
-              ease: 'back.out(1.7)',
+              ease: "back.out(1.7)",
             },
-            '-=0.2'
-          )
+            "-=0.2"
+          );
 
           // Mask fades in smoothly
           tl.to(
@@ -148,15 +156,15 @@ export default function About() {
             {
               opacity: 0.2,
               duration: 1.5,
-              ease: 'power2.out',
+              ease: "power2.out",
             },
-            '-=0.8'
-          )
+            "-=0.8"
+          );
         }
-      )
+      );
     },
     { scope: container }
-  )
+  );
 
   return (
     <div
@@ -200,5 +208,5 @@ export default function About() {
         />
       </div>
     </div>
-  )
+  );
 }

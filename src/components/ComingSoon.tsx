@@ -1,31 +1,31 @@
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function ComingSoon({ title }: { title: string }) {
-  const container = useRef<HTMLDivElement>(null)
-  const textRef = useRef<HTMLHeadingElement>(null)
-  const lineRef = useRef<HTMLDivElement>(null)
-  const subtextRef = useRef<HTMLParagraphElement>(null)
+  const container = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const subtextRef = useRef<HTMLParagraphElement>(null);
 
   useGSAP(
     () => {
-      const tl = gsap.timeline()
+      const tl = gsap.timeline();
 
       tl.from(textRef.current, {
         y: 50,
         opacity: 0,
         duration: 1,
-        ease: 'power3.out',
+        ease: "power3.out",
       })
         .from(
           lineRef.current,
           {
             width: 0,
             duration: 0.8,
-            ease: 'power3.inOut',
+            ease: "power3.inOut",
           },
-          '-=0.5'
+          "-=0.5"
         )
         .from(
           subtextRef.current,
@@ -33,22 +33,23 @@ export default function ComingSoon({ title }: { title: string }) {
             y: 20,
             opacity: 0,
             duration: 0.8,
-            ease: 'power2.out',
+            ease: "power2.out",
           },
-          '-=0.4'
-        )
+          "-=0.4"
+        );
 
       // Continuous glitch/pulse effect
       gsap.to(textRef.current, {
-        textShadow: '0 0 10px rgba(0, 255, 255, 0.5)', // Keeping rgba for opacity control, matches primary
+        textShadow:
+          "0 0 10px color-mix(in srgb, var(--color-primary), transparent 50%)", // Keeping rgba for opacity control, matches primary
         repeat: -1,
         yoyo: true,
         duration: 2,
-        ease: 'sine.inOut',
-      })
+        ease: "sine.inOut",
+      });
     },
     { scope: container }
-  )
+  );
 
   return (
     <div
@@ -60,7 +61,7 @@ export default function ComingSoon({ title }: { title: string }) {
         <h1
           ref={textRef}
           className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-          style={{ fontFamily: 'var(--font-valorant)' }}
+          style={{ fontFamily: "var(--font-valorant)" }}
         >
           {title}
         </h1>
@@ -75,7 +76,7 @@ export default function ComingSoon({ title }: { title: string }) {
         <p
           ref={subtextRef}
           className="text-center text-base tracking-[0.3em] text-white/60 sm:text-lg sm:tracking-[0.5em] md:text-xl md:tracking-[0.6em] lg:text-2xl"
-          style={{ fontFamily: 'var(--font-montserrat)' }}
+          style={{ fontFamily: "var(--font-montserrat)" }}
         >
           COMING SOON
         </p>
@@ -87,5 +88,5 @@ export default function ComingSoon({ title }: { title: string }) {
         <div className="bg-primary absolute right-1/4 bottom-1/3 h-2 w-2 rounded-full opacity-50 blur-[2px]" />
       </div>
     </div>
-  )
+  );
 }

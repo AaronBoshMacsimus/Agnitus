@@ -1,27 +1,28 @@
-import { useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useGLTF } from '@react-three/drei'
-import MainLayout from './layouts/MainLayout'
-import About from './screens/About'
-import Events from './screens/Events'
-import Home from './screens/Home'
-import Map from './screens/Map'
-import Workshops from './screens/Workshops'
-import Contacts from './screens/Contacts'
-import Loading from './screens/loading'
+import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useGLTF } from "@react-three/drei";
+import MainLayout from "./layouts/MainLayout";
+import About from "./screens/About";
+import Events from "./screens/Events";
+import Home from "./screens/Home";
+import Map from "./screens/Map";
+import Workshops from "./screens/Workshops";
+import Contacts from "./screens/Contacts";
+import Loading from "./screens/loading";
 
 // Preload the 3D model
-useGLTF.preload('/models/knife.glb')
+useGLTF.preload("/models/knife.glb");
+useGLTF.preload("/models/fireball.glb");
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [cleanupLoading, setCleanupLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [cleanupLoading, setCleanupLoading] = useState(false);
 
   const handleLoadingComplete = () => {
-    setIsLoading(false)
+    setIsLoading(false);
     // Remove the loading screen from DOM after the transition is fully done (6s buffer)
-    setTimeout(() => setCleanupLoading(true), 6000)
-  }
+    setTimeout(() => setCleanupLoading(true), 6000);
+  };
 
   return (
     <>
@@ -50,5 +51,5 @@ export default function App() {
         </div>
       )}
     </>
-  )
+  );
 }
