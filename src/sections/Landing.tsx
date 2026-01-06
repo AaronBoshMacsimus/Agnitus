@@ -14,10 +14,6 @@ import Loaded from "../screens/loaded";
 
 const TEXT = "AGNITUS";
 
-// ... imports
-
-// ... imports
-
 interface LandingProps {
   onPeak?: () => void;
 }

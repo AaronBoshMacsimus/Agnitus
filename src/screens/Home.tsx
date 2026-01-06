@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import Landing from "../sections/Landing";
 import ComingSoon from "../components/ComingSoon";
-
 export default function Home() {
   const [uiVisible, setUiVisible] = useState(false);
   const context = useOutletContext<{ setRevealed: (val: boolean) => void }>();

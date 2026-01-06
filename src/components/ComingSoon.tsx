@@ -81,12 +81,6 @@ export default function ComingSoon({ title }: { title: string }) {
           COMING SOON
         </p>
       </div>
-
-      {/* Background Decorator Elements */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="bg-secondary absolute top-1/4 left-1/4 h-2 w-2 rounded-full opacity-50 blur-[2px]" />
-        <div className="bg-primary absolute right-1/4 bottom-1/3 h-2 w-2 rounded-full opacity-50 blur-[2px]" />
-      </div>
     </div>
   );
 }

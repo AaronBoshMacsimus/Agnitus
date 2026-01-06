@@ -181,7 +181,7 @@ export default function About() {
         ref={leftImage}
         src="/bike.png"
         alt="Bike"
-        className="absolute -bottom-20 left-[5%] z-50 h-[200px] w-[180px] rounded-t-2xl object-cover sm:left-[10%] sm:h-[250px] sm:w-[200px] md:-bottom-32 md:left-[15%] md:h-[300px] md:w-[250px] lg:-bottom-40 lg:left-[20%] lg:h-[350px] lg:w-[300px] xl:-bottom-48 xl:left-[28%] xl:h-[400px] xl:w-[350px]"
+        className="absolute bottom-32 left-[5%] z-50 h-[200px] w-[180px] rounded-t-2xl object-cover sm:left-[10%] sm:h-[250px] sm:w-[200px] md:-bottom-32 md:left-[15%] md:h-[300px] md:w-[250px] lg:-bottom-40 lg:left-[20%] lg:h-[350px] lg:w-[300px] xl:-bottom-48 xl:left-[28%] xl:h-[400px] xl:w-[350px]"
       />
 
       {/* Right Image (Sitara) */}
@@ -189,7 +189,7 @@ export default function About() {
         ref={rightImage}
         src="/sitara.png"
         alt="Sitara"
-        className="absolute right-[5%] -bottom-32 z-50 h-[200px] w-[180px] rounded-t-2xl object-cover sm:right-[10%] sm:h-[250px] sm:w-[200px] md:right-[15%] md:-bottom-48 md:h-[300px] md:w-[250px] lg:right-[20%] lg:-bottom-64 lg:h-[350px] lg:w-[300px] xl:right-[28%] xl:-bottom-72 xl:h-[400px] xl:w-[350px]"
+        className="absolute right-[5%] bottom-20 z-50 h-[200px] w-[180px] rounded-t-2xl object-cover sm:right-[10%] sm:h-[250px] sm:w-[200px] md:right-[15%] md:-bottom-48 md:h-[300px] md:w-[250px] lg:right-[20%] lg:-bottom-64 lg:h-[350px] lg:w-[300px] xl:right-[28%] xl:-bottom-72 xl:h-[400px] xl:w-[350px]"
       />
 
       {/* Overlay Mask */}
@@ -199,7 +199,7 @@ export default function About() {
       />
 
       {/* Central Logo - revealed at the end */}
-      <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+      <div className="pointer-events-none absolute inset-0 z-60 flex items-center justify-center">
         <img
           ref={logoRef}
           src="/logo.svg"
