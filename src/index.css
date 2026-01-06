@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: #ff4655;
+  --color-background: #111111;
+  --color-border-custom: #383838;
+  --color-text-main: #f5f5f5;
+
+  --font-valorant: "ValorantFont", ui-sans-serif, system-ui, sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-unison: "Unison Pro", sans-serif;
+
+  --spacing-sidebar: 5rem;
+  --spacing-header: 5rem;
+
+  --text-label-sm: 0.65rem;
+  --text-label-base: 0.75rem;
+  --text-heading-lg: 1.75rem;
+}
+
+@font-face {
+  font-family: "ValorantFont";
+  src: url("./assets/fonts/ValorantFont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Unison Pro";
+  src: url("./assets/fonts/UnisonPro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Unison Pro";
+  src: url("./assets/fonts/UnisonPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Unison Pro";
+  src: url("./assets/fonts/UnisonPro-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+:root {
+  --color-primary: #f6954e;
+  --color-secondary: #ff4655;
+  --color-background: #111111;
+  --color-border: #383838;
+  --color-text: #f5f5f5;
+
+  font-family: var(--font-valorant);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --color-primary: #00ffff;
+  }
+}
+
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar-track {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+@keyframes flame-slide {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
